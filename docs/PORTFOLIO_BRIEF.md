@@ -1,4 +1,4 @@
-# Portfolio Brief — Forge-Stack-A1 / Sentinel Prime Network
+# Portfolio Brief — Sentinel Prime Network
 
 > **One-page recruiter overview.** Architecture detail lives in [`../README.md`](../README.md). Publication changelog lives in [`../POLISH_NOTES.md`](../POLISH_NOTES.md).
 
@@ -9,6 +9,12 @@ stack: FastAPI backend, protocol/middleware layer, and front-end visualization
 layer. The current MVP demonstrates structured routing, handoff persistence,
 document-zone migration, and a standalone React visualization component for the
 Quantum Nexus cognitive lattice.
+
+## Naming
+
+Canonical public name: **Sentinel Prime Network**.
+Approved short name: `SPN`.
+`Forge-Stack-A1` is the internal stack/workspace label for this build and should not be used as the public project name.
 
 ## Role demonstrated
 
@@ -47,7 +53,7 @@ production-graduated portfolio pieces:
 
 - `Sentinel-of-sentinel-s-Forge` shows enterprise-grade feature integration
 - `Quantum Nexus Forge` shows a smaller working orchestration MVP
-- `Forge-Stack-A1 / Sentinel Prime Network` shows the reusable platform scaffold
+- `Sentinel Prime Network` shows the reusable platform scaffold; `Forge-Stack-A1` is the internal stack label
 
 Together, those three artifacts show the same architectural instincts at
 different levels of maturity.

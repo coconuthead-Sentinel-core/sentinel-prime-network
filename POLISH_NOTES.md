@@ -1,10 +1,12 @@
-# Polish-Pass Notes — Forge-Stack-A1 / Sentinel Prime Network
+# Polish-Pass Notes — Sentinel Prime Network
 
 **Reviewer:** Codex acting on the SES-20260428-0043 publication handoff  
 **Date:** 2026-04-28  
 **Constraint:** No teardown. No moves. No renames. Portfolio-surface additions only.
 
 Second project in the portfolio sprint after **LIB-PROJ-001 Sentinel-of-sentinel-s-Forge** and before **LIB-PROJ-003 Quantum Nexus Forge**.
+
+Naming note: **Sentinel Prime Network** is the canonical public project name. `Forge-Stack-A1` is the internal stack/workspace label for this build.
 
 ---
 
@@ -70,4 +72,3 @@ Cosmos DB, Azure OpenAI, and FastMCP remain future work and are intentionally
 called out that way in the README.
 
 That honesty is part of the value of the portfolio artifact.
-
