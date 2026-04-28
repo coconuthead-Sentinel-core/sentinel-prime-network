@@ -1,0 +1,29 @@
+# HANDOFF RULES — Forge-Stack-A1 Middle Layer
+# Rules for passing work between AI assistants
+
+## HANDOFF ORDER
+Claude → Gemini → Copilot → Claude (repeating cycle)
+
+## WHAT MUST BE IN HANDOFF_STATE.json
+- Current task queue (all pending tasks)
+- Last completed task
+- Active blockers
+- Files changed this session
+- Next recommended action
+
+## HANDOFF RULES
+1. Never hand off with unsaved work
+2. Always commit to GitHub before handoff
+3. HANDOFF_STATE.json must be updated LAST
+4. Next AI reads AGENTS.md FIRST, then HANDOFF_STATE
+
+## CODEX RULE
+- Codex folder = READ ONLY for all AIs
+- No AI writes to Codex directly
+- Shannon is the only one who writes to Codex
+
+## BRANCH RULES
+- Claude works on: claude-dev branch
+- Gemini works on: gemini-dev branch
+- Copilot works on: copilot-dev branch
+- Main branch: Codex merges only

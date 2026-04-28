@@ -1,0 +1,24 @@
+# QUERY INTERFACE — Forge-Stack-A1 Middle Layer
+# How Claude receives and processes requests
+
+## QUERY TYPES
+
+| Type | Trigger | Node Used | Output |
+|------|---------|-----------|--------|
+| RETRIEVAL | "find", "locate", "search" | A1-Vault (NODE-002) | File or snippet |
+| BUILD | "write", "create", "generate" | Context-Packager (NODE-005) | New file |
+| SYNC | "push", "commit", "save" | GitHub-Sync (NODE-004) | Repo update |
+| HANDOFF | "end session", "closing" | Handoff-Manager (NODE-003) | HANDOFF_STATE.json |
+| ROUTE | "who handles", "which node" | Request-Router (NODE-007) | Node assignment |
+
+## QUERY FLOW
+1. Input received from Shannon
+2. Request-Router identifies query type
+3. Correct node activated
+4. Output returned
+5. Snippet-Cache stores reusable result
+
+## FUZZY RETRIEVAL
+- retrieve_similar(query, threshold=0.7)
+- Searches: Forge-Stack-A1 files, sentinel-prime-network, HANDOFF_STATE
+- Returns: closest matching file or snippet

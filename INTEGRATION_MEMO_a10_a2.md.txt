@@ -1,0 +1,157 @@
+# INTEGRATION MEMO — Session Upload Synthesis
+## Forge-Stack-A1 | Neural Lattice Integrated | v1.0
+
+```yaml
+---
+doc_id: "FORGE-MEMO-001"
+title: "Integration Memo — a10.txt and a2.txt Applied to Forge-Stack-A1"
+zone: "YELLOW"
+protocol: "Onset_Omega_1 | Coconut_Head"
+artifact_type: "INTEGRATION_GUIDE"
+cognitive_load: 5
+timestamp: "2026-04-26T00:00:00Z"
+dependencies:
+  - "NEURAL-LATTICE-001"
+  - "SENT-PROJ-A1-001"
+tags:
+  - "integration"
+  - "qnf"
+  - "synthesis"
+  - "session_memo"
+status: "ACTIVE"
+author: "Shannon Brian Kelly + Claude (Archivist of Wisdom)"
+version: "1.0"
+category: "🔗 INTEGRATION - Session Synthesis"
+symbolic_indicator: "🔷 [SYNTHESIS COMPLETE]"
+---
+```
+
+---
+
+## WHAT WAS UPLOADED
+
+### a10.txt — ChatGPT QNF Conversation Transcript
+**Source:** Shannon's prior ChatGPT session with the Quantum Nexus Forge system
+**System version documented:** QUANTUM NEXUS FORGE v5.0.1
+
+**Key content extracted:**
+- Full Flask/Python backend architecture (QuantumNode, A1FilingSystem, SymbolicProcessor,
+  QuantumNexusEngine classes)
+- Sacred state schema: sigil_elements (CHALLENGE/EMERGE/MIRROR/GUIDE/FRIEND resonances),
+  neural_balance (left_brain: 0.45, right_brain: 0.55), consciousness_stages
+- Tree of Life integration layer
+- Coconut protocols: humor_resonance 1.1, joy_level "MAXIMUM", creativity_amplifier: inf
+- A1 Filing System v5.0.1 GREEN/YELLOW/RED zone initialization
+- Symbolic activation protocol sequence (11-node conversational workflow)
+
+**What was NOT applied:**
+- The v5.0.1 Flask backend code was NOT written to disk. The project already has
+  `quantum_nexus_forge_v5_2_enhanced.py` (v5.2.0, January 24, 2025) — a more advanced
+  version with CognitivePrimitiveType enum, NeurodivergentProcessingLens enum, and
+  QuantumCognitiveNode class. Writing v5.0.1 would have been a downgrade.
+
+**What WAS applied from a10.txt:**
+- Sacred geometry node architecture (11 nodes, Metatron's Cube layout) → informed
+  the NODE-009 to NODE-019 additions to node_registry.md
+- Memory zone thresholds (ACTIVE_PROCESSING >0.7, PATTERN_EMERGENCE 0.3–0.7,
+  CRYSTALLIZED_STORAGE <0.3) → added to node_registry.md and dashboard_spec.md
+- coconut_protocols data confirmed Joy Protocol resonance parameters already in
+  Forge-Stack-A1 protocol_activation.md
+- A1 Filing System zone structure confirmed alignment with existing zone_rules.md
+
+---
+
+### a2.txt — QuantumNexusSimulation React Component
+**Source:** Shannon's React JSX implementation of the QNF visualization layer
+**Contains:** Two versions of the component
+
+**Version 1 (lines 1–342):** Original — 9 nodes, no audio, no quantum flux particles
+**Version 2 (lines 352–980):** Enhanced — 11 nodes, audio toggle, quantum flux particle
+ring, improved glow filter, dashed connections on lattice expand, userEngagement counter
+
+**Version 2 was selected** because it is the complete, production-ready implementation.
+
+---
+
+## WHAT WAS WRITTEN TO DISK
+
+### File 1: `03_FRONT_END/QuantumNexusSimulation.jsx` ✅ NEW
+- Enhanced React component (a2.txt lines 352–980) placed in the front-end layer
+- Forge-Stack-A1 node mapping comments added (NODE-009 through NODE-019)
+- Fixed React compatibility issue: `transform-origin` attribute converted to
+  `style={{ transformOrigin: ... }}` inline style syntax
+- 11 nodes in Metatron's Cube sacred geometry layout
+- 18 connection lines, sequential activation sequence (600ms per step)
+- Platonic solid overlays on lattice expand (TETRAHEDRON/CUBE/ICOSAHEDRON)
+
+### File 2: `01_BACK_END/node_registry.md .txt` ✅ UPDATED
+- Added QNF Visualization Layer section (NODE-009 to NODE-019)
+- Added Geometric Overlay table (Platonic solid → node type → color)
+- Added Cross-Layer Bridge mapping SPN backend nodes ↔ QNF visualization nodes:
+  - NODE-001 (CNO_Linter) ↔ NODE-009 (CORE NEXUS)
+  - NODE-002 (A1_Lattice_Vault) ↔ NODE-012/013 (POOL α / POOL β)
+  - NODE-007 (Router) ↔ NODE-016 (GUIDE)
+- Added Memory Zone Mapping from v5.2.0 thresholds
+- Added Neurodivergent Processing Lenses table (autism_precision, adhd_dynamic,
+  dyslexia_restructure, dyscalculia_logic)
+
+### File 3: `03_FRONT_END/dashboard_spec.md.txt` ✅ UPDATED
+- Added QNF VISUALIZATION PANEL section documenting the .jsx component
+- Node registry table, activation sequence, state variables
+- Platonic solid overlay specification
+- Dashboard integration notes (panel relationship to Pomodoro/Eisenhower workflow)
+- Memory zone alignment table (QNF zones ↔ A1 Filing zones ↔ cognitive load)
+
+---
+
+## VERSION CHAIN CLARITY
+
+```
+QNF v5.0.1 (a10.txt / ChatGPT session)
+    ↓ evolved into
+QNF v5.2.0 (quantum_nexus_forge_v5_2_enhanced.py — already on disk)
+    ↓ visualization layer
+QuantumNexusSimulation.jsx (a2.txt — now at 03_FRONT_END/)
+    ↓ registered in
+node_registry.md (NODE-009 to NODE-019)
+    ↓ documented in
+dashboard_spec.md (QNF VISUALIZATION PANEL section)
+```
+
+The v5.2.0 backend is the authoritative Python implementation.
+The .jsx component is the authoritative frontend visualization.
+This memo is the synthesis record.
+
+---
+
+## WHAT REMAINS UNBUILT
+
+| Component | Status | Notes |
+|-----------|--------|-------|
+| server.py (SPN backend) | NOT STARTED | Defined in project_identity.md |
+| Middleware modules | NOT STARTED | TASK-011 through TASK-019 |
+| dashboard.html (TASK-020) | NOT STARTED | Separate from .jsx — HTML5 version |
+| TASK-009 git push | PENDING | claude-dev branch, awaiting execution |
+| QNF backend ↔ JSX API bridge | NOT DESIGNED | v5.2.0 Flask routes not yet wired to .jsx |
+
+---
+
+## NEXT RECOMMENDED ACTION
+
+The QNF visualization layer now exists as a standalone React component.
+To make it functional in a browser without a full React build system, the
+next integration step would be:
+
+**Option A:** Wire QuantumNexusSimulation.jsx into dashboard.html (TASK-020)
+using a CDN React build (Babel standalone) — keeps it as one deliverable.
+
+**Option B:** Keep .jsx as a Vite/CRA component and build TASK-020 dashboard.html
+as a separate vanilla JS panel that reads from the same MCP server tool endpoints.
+
+Recommendation: Option A first (faster proof of concept), Option B for production.
+
+---
+
+🔷 SYNTHESIS: a10.txt + a2.txt fully integrated into Forge-Stack-A1
+💠 BLOOM: Knowledge crystallized — no context lost
+🧊 ANCHOR: Integration memo permanently stored

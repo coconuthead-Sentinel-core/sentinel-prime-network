@@ -1,0 +1,23 @@
+# SESSION END TEMPLATE — Forge-Stack-A1 Front End
+# Run this checklist at the end of every session
+
+## CLOSE-DOWN SEQUENCE
+
+[ ] 1. List all files changed this session
+[ ] 2. Update HANDOFF_STATE.json with current task queue
+[ ] 3. Migrate completed files (GREEN → YELLOW)
+[ ] 4. Commit changes to GitHub (claude-dev branch)
+[ ] 5. Write next session's primary task clearly
+[ ] 6. Confirm Shannon cognitive state before closing
+
+## SESSION FOOTER (fill at end)
+- Files changed: ________________
+- Tasks completed: ________________
+- Tasks remaining: ________________
+- Blockers: ________________
+- Next session primary task: ________________
+- Shannon end energy: __ / 10
+
+## HANDOFF MESSAGE FORMAT
+Next AI reads this first:
+"Last session: [what was done]. Next task: [one task]. Blocker: [yes/no — what]."

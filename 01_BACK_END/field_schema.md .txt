@@ -1,0 +1,24 @@
+# FIELD SCHEMA — Forge-Stack-A1 Back End
+# Metadata structure for all documents and outputs
+
+## REQUIRED FIELDS
+
+| Field | Type | Format | Example |
+|-------|------|--------|---------|
+| doc_id | String | PREFIX-TYPE-### | FORGE-BACK-001 |
+| title | String | Max 200 chars | Node Registry v1.0 |
+| zone | Enum | GREEN/YELLOW/RED | GREEN |
+| cognitive_load | Integer | 1-10 | 8 |
+| timestamp | ISO8601 | YYYY-MM-DDTHH:MM:SSZ | 2026-04-24T00:00:00Z |
+| status | Enum | DRAFT/ACTIVE/ARCHIVED | ACTIVE |
+| author | String | Name | Shannon Brian Kelly |
+| version | String | v### | v001 |
+
+## ZONE RULES
+- GREEN (7-10): Active build files — current session work
+- YELLOW (4-6): Reference files — occasional access
+- RED (1-3): Archive — permanent storage, rare access
+
+## NAMING STANDARD
+[PROJECT]-[AREA]-[ITEM]_[YYYY-MM-DD]_v001
+Example: FORGE-BACK-node_registry_2026-04-24_v001

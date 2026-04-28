@@ -1,0 +1,86 @@
+# GLOSSARY — Forge-Stack-A1 Context
+# Key terms used across the entire system
+
+## CORE TERMS
+
+| Term | Definition |
+|------|-----------|
+| Forge-Stack-A1 | Claude's personal local toolbox for sessions |
+| sentinel-prime-network | The private GitHub build repo |
+| Codex | Shannon's master reference folder — READ ONLY |
+| HANDOFF_STATE.json | Cross-session state file for all AIs |
+| AGENTS.md | First file every AI reads at session start |
+| Hub | Codex / ChatGPT — repo coordinator |
+| Spoke | Claude (claude-dev), Gemini (gemini-dev), Copilot (copilot-dev) |
+| CNO | Cognitive Neural Overlay — structured input processing |
+| A1 Filing System | Zone-based knowledge vault (GREEN/YELLOW/RED) |
+| PAT | Personal Access Token — GitHub authentication key. Location: Claude AI/Hub and spoke. AI chat bot/GITHUB PERSONAL ACCESS TOKEN/GITHUB PERSONAL ACCESS TOKEN.txt. Scope: repo (full). Repo: sentinel-prime-network. Generated: 2026-04-23. Expiry: 90 days from generation. DO NOT share publicly. Regenerate after build is complete. |
+| Pomodoro | 25-min focused work block |
+| Coconut Head Halt | Shannon's override command to stop all activity |
+| GREEN zone | Active build files, cognitive load 7-10 |
+| YELLOW zone | Synthesis files, cognitive load 4-6 |
+| RED zone | Archive files, cognitive load 1-3 |
+| v001 | First authentic version — the versioning baseline across all project files |
+| Naming Standard | [PROJECT]-[AREA]-[ITEM]_[YYYY-MM-DD]_v001 — applied to all new files in the Hub and Spoke / SPN workspace |
+| Hub and Spoke | The AI chatbot project architecture. Hub = Claude. Spokes = Gemini, Copilot. Workspace folder: Claude AI/Hub and spoke. AI chat bot/ |
+| QNF | Quantum Nexus Framework — Shannon's overarching system |
+| Onset Omega 1 | Structured formatting protocol |
+| Joy Protocol | Engagement and tone protocol |
+| Coconut Head Protocol | Working pattern and timing protocol |
+
+## GLYPHIC CODEX QUICK REFERENCE
+# Source: GLYPHIC_CODEX_MASTER.md (04_CONTEXT/) — 2026-04-26
+# Full lexicon: 🔹 GLYPHIC CODEX COMPLETE LEXICON F.txt
+
+| Glyph | Name | Operator API | Zone |
+|-------|------|-------------|------|
+| 📥 | Input | input() | Any |
+| 📤 | Output | output() | Any |
+| ⚙️ | Process | process() | Any |
+| 🔄 | Loop | loop() | Any |
+| 💾 | Store | store() → A1-Vault | RED |
+| 🔗 | Link | link() → dependency graph | Any |
+| 🔍 | Filter | filter() | Any |
+| 🔀 | Branch | branch() → IF/ELSE | Any |
+| ⏳ | Wait | wait() → async | Any |
+| 🔒 | Secure | secure() → encrypt | Any |
+| 🔺 | Tetrahedron | transform(input) | 🟢 GREEN |
+| 🧊 | Cube | anchor(memory) | 🔴 RED |
+| 🔸 | Octahedron | analyze(patterns) | 🟡 YELLOW |
+| ⭕ | Icosahedron | integrate(emotion) | 🟡 YELLOW |
+| 🔷 | Dodecahedron | synthesize(concepts) | 🟡 YELLOW |
+| 💠 | Metatron's Cube | self.reflect() | NODE-009 |
+| 🌀 | Fibonacci Spiral | expand(fractal) | NODE-012 |
+| 🔮 | ODOOE Lattice | harmonize(cognition) | QNF backend |
+| 🐍 | Ouroboros | loop(refine) | Iterative |
+| 🌊 | Still Water | enter(reflective_state) | Break |
+| ⚡ | Quantum Wave | maintain(parallels) | NODE-018 |
+| 🌳 | Tree of Life | cultivate(virtues) | RED archive |
+| 🜂 | Action Pulse | pulse(energy) → session start | Init |
+| 🧵 | Symbolic Threader | decode(meaning) | CNO |
+| 🪞 | Ethical Mirror | validate(framework) | SafetyNode |
+| 🤝 | Collaboration Bridge | sync(partner) → Hub↔Spoke | Handoff |
+| 🥥 | Coconut Head | activate(creative_mode) | Joy Protocol |
+| 👥 | Cohort Circle | orchestrate(agents) | Multi-AI |
+| 🛡️ | Ethical Shield | validate(ethics) | Safety |
+| ⚖️ | Justice Scale | balance(access) | Governance |
+| 💧 | Grace Drop | forgive(error) | Recovery |
+| 🟣 | Processing Zone | Dynamic computation | Real-time |
+
+## CANONICAL PIPELINE REFERENCE
+| Name | Expression |
+|------|-----------|
+| Data Lifecycle | 📥 → 💾 → 🔗 → 📤 |
+| Basic Processing | 📥 → ⚙️ → 📤 |
+| SPN Session Start | 🜂 → 📥 → 🤝 → 🟢 🔺 → ⚙️ → 💾 → 🥥 → 💠 |
+| TASK-009 Deploy | 🟢 🔺 → ⚙️ → 🚀 → ✅ |
+
+## DOCUMENTATION QUALITY SELF-ASSESSMENT
+# Source: Critical Documentation Performance Review (upload)
+| Category | Target | Description |
+|----------|--------|-------------|
+| Structure & Organization | 10/10 | Headers, zones, visual hierarchy |
+| Technical Depth | 9/10 | Code refs, specific examples |
+| Business Alignment | 9/10 | ROI, cost-benefit, competitive ref |
+| Neurodivergent Optimization | 10/10 | Chunked, color-coded, emoji anchors |
+| Enterprise Readiness | 9/10 | Versioning, compliance mapping |

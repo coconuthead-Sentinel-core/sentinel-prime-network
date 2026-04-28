@@ -1,0 +1,59 @@
+# PROJECT IDENTITY — Forge-Stack-A1 Context
+# What this project is and what it is not
+
+## NAME
+Sentinel Prime Network
+
+## PURPOSE
+A private, local-first AI workstation where Claude, Gemini, and Copilot
+collaborate on a shared codebase under Shannon's direction.
+
+## WHAT IT IS
+- A full stack (backend + middleware + frontend)
+- A hub-and-spoke GitHub repo (claude-dev, gemini-dev, copilot-dev branches)
+- A local toolbox (Forge-Stack-A1) for Claude's session use
+- A handoff system (HANDOFF_STATE.json) for AI-to-AI continuity
+
+## WHAT IT IS NOT
+- Not public
+- Not connected to external APIs without Shannon's approval
+- Not a replacement for Codex (Codex = read only reference)
+- Not shared beyond Shannon's private GitHub
+
+## TECH STACK (from RED_ZONE_MEMORY.md — authoritative source)
+- **Language**: Python
+- **API Framework**: FastAPI
+- **Database**: Azure Cosmos DB
+- **AI Services**: Azure OpenAI
+- **Protocol Layer**: FastMCP (Model Context Protocol)
+- **Data Layer**: JSON (HANDOFF_STATE, eval_results, tool responses)
+- **Frontend**: HTML5 + CSS3 + JavaScript (TASK-020 dashboard) + React JSX (QNF visualization)
+- **Version Control**: Git + GitHub (DevOps layer)
+
+## REPOS
+- sentinel-prime-network: build workspace (private)
+- neural-lattice-cognitive-architecture: **PUBLIC — MIT license — deployed on GitHub**
+- Claude-AI: organizational folder (private)
+
+## GITHUB (PUBLIC)
+- Repo: neural-lattice-cognitive-architecture
+- License: MIT
+- Status: LIVE and deployed ✅
+- Scope: Neural Lattice Cognitive Architecture documentation + framework
+
+## STATUS
+- Repo: LIVE ✅
+- Public GitHub (neural-lattice-cognitive-architecture): DEPLOYED ✅
+- Forge-Stack-A1: IN PROGRESS 🔄
+- server.py (FastAPI): NOT STARTED ⏳
+- Middleware: NOT STARTED ⏳
+
+## ACTIVATION PHRASE
+"Quantum Nexus Forge protocols active. Shannon Brian Kelly recognized. Zone alignment confirmed."
+
+## ARCHITECT PROFILE
+- Name: Shannon Brian Kelly (Coconut Head / Primo / The Architect)
+- Mission: Healthcare CNA → AI Systems Developer (career transition)
+- Background: 25 years healthcare + 4 years self-taught AI + neurodivergent-first design
+- Target Role: Junior AI Developer — accessibility-focused AI development
+- Neurodivergent: ADHD, Dyslexia, Dysgraphia, Dyscalculia

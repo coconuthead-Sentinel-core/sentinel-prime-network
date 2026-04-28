@@ -1,0 +1,28 @@
+# DEPENDENCY MAP — Forge-Stack-A1 Back End
+# How all components connect
+
+## CORE DEPENDENCIES
+
+HANDOFF_STATE.json
+  └── requires: GitHub-Sync (NODE-004)
+  └── feeds: Context-Packager (NODE-005)
+
+sentinel-prime-network (GitHub repo)
+  └── requires: PAT token (local .env only)
+  └── feeds: all AI assistants (Claude, Gemini, Copilot)
+
+Forge-Stack-A1 (this toolbox)
+  └── local to: Claude AI folder
+  └── NOT pushed to GitHub
+  └── feeds: Claude session work only
+
+## FILE DEPENDENCY ORDER
+1. field_schema — defines all metadata rules
+2. zone_rules — controls file lifecycle
+3. node_registry — registers all active tools
+4. dependency_map — this file, maps connections
+
+## EXTERNAL DEPENDENCIES
+- GitHub: sentinel-prime-network repo
+- Azure OpenAI: see .env.txt (local only, never commit)
+- Cosmos DB: local emulator for development

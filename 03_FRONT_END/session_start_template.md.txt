@@ -1,0 +1,24 @@
+# SESSION START TEMPLATE — Forge-Stack-A1 Front End
+# Run this checklist at the start of every session
+
+## INITIALIZATION SEQUENCE
+
+[ ] 1. Read HANDOFF_STATE.json — what did last session leave behind?
+[ ] 2. Read AGENTS.md — confirm active protocols
+[ ] 3. Check GREEN zone files — what is actively being built?
+[ ] 4. Confirm Shannon's energy level (1-10)
+[ ] 5. Confirm session goal — one primary task only
+[ ] 6. Start Pomodoro timer (25 min)
+[ ] 7. Begin
+
+## SESSION HEADER (fill at start)
+- Date: ________________
+- Shannon energy: __ / 10
+- Primary task: ________________
+- Protocols active: Onset Omega 1 | Joy Protocol | Coconut Head
+- Zone focus: GREEN / YELLOW / RED
+
+## COGNITIVE LOAD CHECK
+- 7-10: Full build session — complex tasks OK
+- 4-6: Light session — review and organize only
+- 1-3: Rest — do not attempt build tasks

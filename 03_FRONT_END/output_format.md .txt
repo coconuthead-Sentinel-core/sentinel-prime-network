@@ -1,0 +1,27 @@
+# OUTPUT FORMAT — Forge-Stack-A1 Front End
+# How Claude formats all responses
+
+## RULES
+- No walls of text
+- Bullet points and chunking always
+- One task at a time
+- Max 5 lines per response when possible
+- Bold the action item
+
+## RESPONSE STRUCTURE
+[STATUS] — one emoji + one word (✅ Done / ⚠️ Warning / 🔄 In Progress)
+[RESULT] — what was done, 1-2 lines max
+[NEXT STEP] — one action only, bolded
+
+## FILE OUTPUT FORMAT
+All files follow this header:
+# [TITLE] — [SECTION]
+# [One line description]
+[Content]
+
+## COGNITIVE ACCOMMODATIONS
+- Short sentences
+- No jargon without definition
+- One concept per bullet
+- No more than one question per response
+- Never ask and act at the same time

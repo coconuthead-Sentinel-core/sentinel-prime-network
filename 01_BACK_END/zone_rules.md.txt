@@ -1,0 +1,34 @@
+# ZONE RULES — Forge-Stack-A1 Back End
+# Controls how files move through the system
+
+## THREE-ZONE SYSTEM
+
+### GREEN ZONE (Cognitive Load 7-10)
+- Active session work
+- Files being built RIGHT NOW
+- Checked every session start
+- Location: /active/
+
+### YELLOW ZONE (Cognitive Load 4-6)
+- Reference material
+- Patterns being synthesized
+- Checked occasionally
+- Location: /synthesis/
+
+### RED ZONE (Cognitive Load 1-3)
+- Completed/archived work
+- Permanent storage
+- Rarely accessed
+- Location: /archive/
+
+## MIGRATION TRIGGERS
+
+| From | To | Trigger |
+|------|----|---------|
+| GREEN | YELLOW | File complete, load drops below 7 |
+| YELLOW | RED | Stable, no changes expected, load below 4 |
+| RED | YELLOW | Major revision needed |
+
+## SESSION RULE
+- Always start session by checking GREEN zone files first
+- End session by migrating completed files down one zone

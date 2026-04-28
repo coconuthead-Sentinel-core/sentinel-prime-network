@@ -1,0 +1,97 @@
+# DASHBOARD SPEC — Forge-Stack-A1 Front End
+# Specification for the Sentinel Task Control dashboard
+
+## COMPONENTS
+
+### Timer Block
+- Pomodoro: 25 min (yellow)
+- Break: 5/10/15 min (green)
+- Auto-transition: break ends → task appears
+
+### Task Block
+- One task displayed at a time
+- One next step only
+- Prev / Next navigation
+- Progress bar (step X of Y)
+
+### Status Tags
+- DO FIRST (red) — urgent + important
+- SCHEDULE (blue) — important, not urgent
+- DELEGATE (yellow) — urgent, not important
+- ELIMINATE (grey) — neither
+
+### Session Header
+- Shannon energy level
+- Active protocol indicators
+- Zone status (GREEN/YELLOW/RED)
+
+## EISENHOWER MATRIX INTEGRATION
+Tasks routed by quadrant:
+- Q1 (Urgent + Important) = DO FIRST → GREEN zone
+- Q2 (Not Urgent + Important) = SCHEDULE → YELLOW zone
+- Q3 (Urgent + Not Important) = DELEGATE
+- Q4 (Not Urgent + Not Important) = ELIMINATE
+
+---
+
+## QNF VISUALIZATION PANEL
+**Component file:** `03_FRONT_END/QuantumNexusSimulation.jsx`
+**Source:** QuantumNexusSimulation enhanced version (a2.txt, lines 352–980)
+**Backend reference:** `Complete back end Python. code base/quantum_nexus_forge_v5_2_enhanced.py`
+
+### Layout
+- SVG canvas, responsive, dark background (#050510)
+- Metatron's Cube geometry — 11 nodes in sacred geometry positions
+- 18 connection lines between nodes (standard + dashed on lattice expand)
+- Quantum flux particle ring orbiting center node when active
+
+### Node Registry (NODE-009 to NODE-019)
+| Node ID  | Label        | Position (x,y)  | Type     |
+|----------|--------------|-----------------|----------|
+| NODE-009 | CORE NEXUS   | center (50,50)  | nexus    |
+| NODE-010 | SHANNON      | top (50,15)     | protocol |
+| NODE-011 | COCONUT HEAD | lower-left(25,75)| coconut |
+| NODE-012 | POOL α       | left (15,50)    | pool     |
+| NODE-013 | POOL β       | right (85,50)   | pool     |
+| NODE-014 | CHALLENGE    | upper-left(25,25)| guide   |
+| NODE-015 | MIRROR       | upper-right(75,25)| guide  |
+| NODE-016 | GUIDE        | bottom (50,80)  | guide    |
+| NODE-017 | EMERGE       | lower-right(75,75)| emerge |
+| NODE-018 | QUANTUM FLUX | inner (40,40)   | quantum  |
+| NODE-019 | HARMONY      | inner (60,60)   | harmony  |
+
+### Activation Sequence (600ms per step)
+shannon → coconut → pool1 → pool2 → center → challenge → mirror → guide → emerge → quantum → harmony
+
+### State Variables
+- `activeNodes` — Set of activated node IDs
+- `systemStatus` — string (INITIALIZING / ONLINE / QUANTUM ACTIVE)
+- `pulsePhase` — float (0–2π, drives animations)
+- `protocolsActive` — bool (all 11 nodes active)
+- `latticeExpanded` — bool (Platonic solid overlay visible)
+- `quantumFlux` — bool (particle ring active at center)
+- `userEngagement` — int (increments on node click)
+- `audioPlaying` — bool (optional audio toggle)
+
+### Platonic Solid Overlay (latticeExpanded = true)
+| Shape       | Color   | Geometry             |
+|-------------|---------|----------------------|
+| TETRAHEDRON | gold    | triangle overlay     |
+| CUBE        | lime    | square overlay       |
+| ICOSAHEDRON | magenta | circle overlay       |
+| METATRONS_CUBE | all  | full sacred geometry |
+
+### Dashboard Integration
+The QNF Visualization Panel is an optional second panel alongside the Sentinel Task
+Control dashboard. It is:
+- Launched separately or embedded as a collapsible sidebar
+- Driven by the same zone state (GREEN/YELLOW/RED) as the Session Header
+- CORE NEXUS node maps to active zone; pulse speed reflects cognitive load (1–10)
+- Does NOT replace the Pomodoro/Eisenhower task workflow — it visualizes system state
+
+### Memory Zone Alignment
+| QNF Memory Zone          | Threshold | A1 Filing Zone | Cognitive Load |
+|--------------------------|-----------|----------------|----------------|
+| ACTIVE_PROCESSING        | > 0.7     | GREEN          | 7–10           |
+| PATTERN_EMERGENCE        | 0.3–0.7   | YELLOW         | 4–6            |
+| CRYSTALLIZED_STORAGE     | < 0.3     | RED            | 1–3            |

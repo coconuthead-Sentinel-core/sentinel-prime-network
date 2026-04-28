@@ -1,0 +1,242 @@
+# LOCAL DATABASE SCHEMA — SPN_Forge_LocalDB.accdb
+## Microsoft Access Database Design | Forge-Stack-A1
+## Rename: Database2.accdb → SPN_Forge_LocalDB.accdb
+
+```yaml
+---
+doc_id: "FORGE-DB-001"
+title: "SPN_Forge_LocalDB — Access Database Schema"
+zone: "RED"
+artifact_type: "TECHNICAL_BLUEPRINT"
+cognitive_load: 3
+timestamp: "2026-04-26T00:00:00Z"
+tags: ["database", "access", "schema", "local_resource", "skill_vault"]
+status: "REFERENCE"
+---
+```
+
+---
+
+## DATABASE IDENTITY
+
+- **File**: SPN_Forge_LocalDB.accdb (rename from Database2.accdb)
+- **Location**: Claude AI/ folder on laptop
+- **Type**: Microsoft Access (.accdb format)
+- **Purpose**: Local resource vault — skills, code, API endpoints, project tracking
+- **Companion**: FORGE_DASHBOARD.html (interactive panel, same folder or Desktop)
+
+---
+
+## TABLE 1: tbl_Skills
+
+Stores all skills built from Task #12 to present.
+
+| Field | Type | Size | Notes |
+|-------|------|------|-------|
+| SkillID | AutoNumber | PK | Auto-increment |
+| TaskNumber | Number | Integer | 12-25+ |
+| SkillName | Short Text | 100 | e.g., "neural-lattice" |
+| DisplayName | Short Text | 200 | Human-readable |
+| Description | Long Text | Memo | Full description |
+| TriggerWords | Long Text | Memo | Comma-separated triggers |
+| Zone | Short Text | 10 | GREEN / YELLOW / RED |
+| CognitiveLoad | Number | Integer | 1-10 |
+| Status | Short Text | 20 | ACTIVE / ARCHIVED / DRAFT |
+| GlyphSequence | Short Text | 50 | e.g., 📥 → ⚙️ → 📤 |
+| CourseLink | Short Text | 200 | IBM / Google / CU ref |
+| FilePath | Short Text | 500 | Skill file location |
+| DateCreated | Date/Time | | ISO 8601 |
+| Notes | Long Text | Memo | Integration notes |
+
+**Pre-populated rows** (13 skills):
+
+| TaskNum | SkillName | Zone | Status |
+|---------|-----------|------|--------|
+| 12 | shannon-lab-protocol | RED | ACTIVE |
+| 13 | shannon-prompt-guide | RED | ACTIVE |
+| 14 | CLAUDE.md | RED | ACTIVE |
+| 15 | ibm-se-companion | RED | ACTIVE |
+| 16 | ibm-git-companion | RED | ACTIVE |
+| 17 | cu-nd-companion | RED | ACTIVE |
+| 18 | cu-seb-companion | RED | ACTIVE |
+| 19 | cu-medmgmt-companion | RED | ACTIVE |
+| 20 | google-prompting-1 | RED | ACTIVE |
+| 21 | google-prompting-2 | RED | ACTIVE |
+| 22 | google-prompting-3 | RED | ACTIVE |
+| -- | neural-lattice | RED | ACTIVE |
+| -- | niscob-protocol | RED | ACTIVE |
+
+---
+
+## TABLE 2: tbl_CodeSnippets
+
+Local code repository — Python, JS, YAML, HTML, CSS.
+
+| Field | Type | Size | Notes |
+|-------|------|------|-------|
+| SnippetID | AutoNumber | PK | |
+| SnippetName | Short Text | 200 | Descriptive name |
+| Language | Short Text | 20 | Python / JS / YAML / HTML / CSS |
+| Category | Short Text | 30 | Backend / Frontend / Middleware / Config |
+| Code | Long Text | Memo | Full code block |
+| NodeID | Short Text | 20 | e.g., NODE-001 |
+| TaskNumber | Number | Integer | Associated task |
+| Status | Short Text | 20 | ACTIVE / TEMPLATE / ARCHIVED |
+| DateAdded | Date/Time | | |
+| Notes | Long Text | Memo | Usage notes |
+
+**Pre-populated snippets**:
+
+| Name | Language | Category |
+|------|----------|----------|
+| NeuralLatticeProcessor class | Python | Backend |
+| SentinelPrimeAPI class | Python | Backend |
+| SymbolicNode class | Python | Backend |
+| GlyphValidator class | JavaScript | Frontend |
+| SentinelDashboard class | JavaScript | Frontend |
+| Dashboard CSS grid | CSS | Frontend |
+| YAML metadata template | YAML | Config |
+| Session init template | YAML | Config |
+| retrieve_similar() function | Python | Middleware |
+| HANDOFF_STATE schema | JSON | Config |
+
+---
+
+## TABLE 3: tbl_APIEndpoints
+
+All FastAPI endpoints for sentinel-prime-network backend.
+
+| Field | Type | Size | Notes |
+|-------|------|------|-------|
+| EndpointID | AutoNumber | PK | |
+| Method | Short Text | 10 | GET / POST / PUT / DELETE |
+| Route | Short Text | 200 | e.g., /api/handoff |
+| Description | Long Text | Memo | What it does |
+| RequestBody | Long Text | Memo | JSON schema |
+| ResponseBody | Long Text | Memo | JSON schema |
+| NodeID | Short Text | 20 | Which node handles it |
+| Layer | Short Text | 20 | Backend / Middleware / MCP |
+| Status | Short Text | 20 | PLANNED / ACTIVE / DEPRECATED |
+| TaskNumber | Number | Integer | When it gets built |
+| Notes | Long Text | Memo | |
+
+**Planned endpoints** (from server.py spec):
+
+| Method | Route | Layer | Node | Task | Status |
+|--------|-------|-------|------|------|--------|
+| GET | /health | Backend | NODE-001 | TASK-010 | PLANNED |
+| GET | /api/handoff | Backend | NODE-003 | TASK-011 | PLANNED |
+| POST | /api/handoff | Backend | NODE-003 | TASK-011 | PLANNED |
+| GET | /api/zones | Backend | NODE-002 | TASK-012 | PLANNED |
+| GET | /api/nodes | Backend | NODE-007 | TASK-012 | PLANNED |
+| GET | /api/nodes/{node_id} | Backend | NODE-007 | TASK-012 | PLANNED |
+| GET | /api/tasks | Backend | NODE-003 | TASK-013 | PLANNED |
+| POST | /api/tasks | Backend | NODE-003 | TASK-013 | PLANNED |
+| PUT | /api/tasks/{id} | Backend | NODE-003 | TASK-013 | PLANNED |
+| GET | /api/metrics | Backend | NODE-001 | TASK-014 | PLANNED |
+| POST | /api/eval | Backend | NODE-001 | TASK-014 | PLANNED |
+| GET | /api/snippets | Middleware | NODE-008 | TASK-015 | PLANNED |
+| POST | /api/snippets | Middleware | NODE-008 | TASK-015 | PLANNED |
+| GET | /api/files | Middleware | NODE-006 | TASK-016 | PLANNED |
+| POST | /api/mcp/tool | MCP | NODE-001 | TASK-017 | PLANNED |
+| POST | /api/openai/infer | Backend | Azure OAI | TASK-018 | PLANNED |
+| GET | /api/cosmos/query | Backend | Cosmos DB | TASK-019 | PLANNED |
+| GET | /api/dashboard | Frontend | NODE-005 | TASK-020 | PLANNED |
+
+---
+
+## TABLE 4: tbl_ProjectTasks
+
+All SPN tasks from TASK-009 onward.
+
+| Field | Type | Size | Notes |
+|-------|------|------|-------|
+| TaskID | AutoNumber | PK | |
+| TaskNumber | Short Text | 20 | TASK-009, etc. |
+| Title | Short Text | 200 | |
+| Description | Long Text | Memo | |
+| Status | Short Text | 20 | PENDING / IN_PROGRESS / COMPLETE / BLOCKED |
+| SDLCPhase | Short Text | 30 | PLANNING / BUILD / DEPLOY / etc. |
+| Zone | Short Text | 10 | GREEN / YELLOW / RED |
+| AssignedAI | Short Text | 20 | Claude / Gemini / Copilot |
+| Branch | Short Text | 50 | claude-dev / main / etc. |
+| Dependencies | Short Text | 200 | Comma-separated task IDs |
+| DateCreated | Date/Time | | |
+| DateCompleted | Date/Time | | |
+| Notes | Long Text | Memo | IBM course bridge |
+
+---
+
+## TABLE 5: tbl_Nodes
+
+Node registry — SPN, QNF, and CNO layers.
+
+| Field | Type | Size | Notes |
+|-------|------|------|-------|
+| NodeID | Short Text | 20 | PK — e.g., NODE-001 |
+| NodeName | Short Text | 100 | |
+| Layer | Short Text | 20 | SPN / QNF / CNO |
+| Function | Long Text | Memo | |
+| Status | Short Text | 20 | ACTIVE / PLANNED |
+| GlyphMapping | Short Text | 20 | e.g., ⚙️ |
+| Dependencies | Short Text | 200 | Comma-separated NodeIDs |
+| TechStack | Short Text | 200 | Python / FastAPI / Azure / etc. |
+
+---
+
+## TABLE 6: tbl_GlyphCodex
+
+Complete Glyphic Codex reference — queryable locally.
+
+| Field | Type | Size | Notes |
+|-------|------|------|-------|
+| GlyphID | AutoNumber | PK | |
+| Glyph | Short Text | 10 | Emoji character |
+| Name | Short Text | 100 | e.g., "Tetrahedron" |
+| OperatorAPI | Short Text | 100 | e.g., "transform(input)" |
+| LLMEquivalent | Short Text | 200 | |
+| ZoneAlignment | Short Text | 10 | GREEN / YELLOW / RED |
+| NodeMapping | Short Text | 50 | e.g., NODE-017 |
+| Category | Short Text | 30 | Core / Platonic / Dynamic / Partnership / Governance |
+
+---
+
+## TABLE 7: tbl_Sessions
+
+Session log — every working session with Shannon.
+
+| Field | Type | Size | Notes |
+|-------|------|------|-------|
+| SessionID | AutoNumber | PK | |
+| SessionDate | Date/Time | | |
+| DurationMinutes | Number | Integer | |
+| PomodoroBlocks | Number | Integer | |
+| AvgCognitiveLoad | Number | Single | 1-10 |
+| TasksCompleted | Long Text | Memo | Comma-separated |
+| FilesModified | Long Text | Memo | List |
+| EnergyStart | Number | Integer | 1-10 |
+| EnergyEnd | Number | Integer | 1-10 |
+| ZoneFocus | Short Text | 10 | PRIMARY zone for session |
+| Notes | Long Text | Memo | Key outcomes |
+
+---
+
+## RELATIONSHIPS
+
+```
+tbl_Skills.TaskNumber → tbl_ProjectTasks.TaskNumber (one-to-many)
+tbl_CodeSnippets.NodeID → tbl_Nodes.NodeID (many-to-one)
+tbl_APIEndpoints.NodeID → tbl_Nodes.NodeID (many-to-one)
+tbl_APIEndpoints.TaskNumber → tbl_ProjectTasks.TaskNumber (many-to-one)
+tbl_GlyphCodex.NodeMapping → tbl_Nodes.NodeID (many-to-one)
+```
+
+---
+
+## COMPANION FILE: FORGE_DASHBOARD.html
+
+Interactive HTML panel saved to Desktop or Claude AI folder.
+Opens in browser. No server required. Reads embedded JSON data.
+Provides: Skill tracker | Task board | API catalog | Code library | Node registry
+
+See: FORGE_DASHBOARD.html (Desktop)

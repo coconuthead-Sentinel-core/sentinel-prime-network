@@ -1,0 +1,149 @@
+# TASK-009 PREP — Git Push to sentinel-prime-network
+## Forge-Stack-A1 | SDLC: DEPLOYMENT Phase | v1.0
+## Source: Hub and spoke. AI chat bot folder review (2026-04-26)
+
+```yaml
+---
+doc_id: "FORGE-TASK009-001"
+title: "TASK-009 Git Push Readiness Checklist"
+zone: "GREEN"
+protocol: "Onset_Omega_1 | Coconut_Head"
+artifact_type: "IMPLEMENTATION_GUIDE"
+cognitive_load: 7
+timestamp: "2026-04-26T00:00:00Z"
+tags:
+  - "task009"
+  - "git"
+  - "github"
+  - "deployment"
+  - "sdlc"
+status: "READY"
+author: "Claude (Archivist of Wisdom)"
+---
+```
+
+---
+
+## WHAT TASK-009 IS
+
+TASK-009 is the first formal DEPLOYMENT action in the SPN SDLC.
+It pushes the completed backend to GitHub on the `claude-dev` branch.
+
+IBM SE Course anchor:
+> "Module 2 taught that Deployment is a formal SDLC phase — not just uploading files.
+> Version control IS the deployment discipline. This is what a DevOps engineer does
+> on day one of a production project."
+
+---
+
+## GITHUB CREDENTIALS
+
+**Repo**: sentinel-prime-network (private)
+**Branch**: claude-dev (staging) → main (production)
+**PAT Location**: Claude AI/Hub and spoke. AI chat bot/GITHUB PERSONAL ACCESS TOKEN/GITHUB PERSONAL ACCESS TOKEN.txt
+**PAT Scope**: repo (full)
+**PAT Generated**: 2026-04-23
+**PAT Expiry**: 90 days (~2026-07-22)
+**PAT Note**: Regenerate after build is complete. Do not share publicly.
+
+⚠️ To use the PAT: Open the file above, copy the token. Use it as your password
+   when git prompts for credentials (username = your GitHub username).
+
+---
+
+## PRE-FLIGHT CHECKLIST (run before any git command)
+
+- [ ] PowerShell is open (Windows key → type PowerShell → Enter)
+- [ ] You are in the correct directory (`cd` to your sentinel-prime-network folder)
+- [ ] .gitignore is in place (excludes .env, __pycache__, *.pyc, HANDOFF_STATE.json if sensitive)
+- [ ] No secrets in staged files (no API keys, no raw PAT in any .py or .txt file)
+- [ ] PAT is copied from the file location above (not typed from memory)
+
+---
+
+## COMMAND SEQUENCE
+
+```powershell
+# Step 1 — Navigate to repo
+cd path\to\sentinel-prime-network
+
+# Step 2 — Check current status
+git status
+
+# Step 3 — Stage files (review before staging)
+git add .
+
+# Step 4 — Review what is staged
+git diff --cached --name-only
+
+# Step 5 — Commit with SDLC-labeled message
+git commit -m "TASK-009: Initial deployment — SPN backend v001 [SDLC:DEPLOY]"
+
+# Step 6 — Push to claude-dev (staging branch)
+git push origin claude-dev
+
+# When prompted:
+#   Username: your GitHub username
+#   Password: paste PAT from file (NOT your GitHub password)
+```
+
+---
+
+## FILE NAMING STANDARD (from Hub and Spoke workspace)
+
+All new files in the SPN / Hub and Spoke project follow this format:
+
+```
+[PROJECT]-[AREA]-[ITEM]_[YYYY-MM-DD]_v001
+```
+
+Examples:
+- SPN-BACKEND-server_2026-04-26_v001.py
+- SPN-DOC-handoff_2026-04-26_v001.md
+- HUB-CREATIVE-prompts_2026-04-26_v001.txt
+
+Version increments: v001 → v002 on each meaningful revision.
+"v001 = first authentic version" — the baseline for all project artifacts.
+
+---
+
+## HUB AND SPOKE FOLDER STRUCTURE (workspace map)
+
+```
+Claude AI/Hub and spoke. AI chat bot/
+├── Build/          ← Build artifacts (currently empty scaffold)
+├── Doc/            ← Documentation (currently empty scaffold)
+├── Archive/        ← Archived versions (currently empty scaffold)
+├── Exports/        ← Exported deliverables (currently empty scaffold)
+├── creative/       ← Creative assets
+│   ├── Creative_Master_A1.txt   ← Master creative reference (v001)
+│   ├── ideas_A1.txt             ← Idea bank (v001)
+│   └── prompts_A1.txt           ← Prompt library (v001)
+└── GITHUB PERSONAL ACCESS TOKEN/
+    └── GITHUB PERSONAL ACCESS TOKEN.txt   ← PAT storage (see above)
+```
+
+Status: All scaffold folders have naming standard applied. Content population is next step.
+
+---
+
+## POST-PUSH VERIFICATION
+
+After running git push:
+1. Go to GitHub → sentinel-prime-network → claude-dev branch
+2. Confirm files appear
+3. Confirm no secrets are visible in any committed file
+4. Update HANDOFF_STATE.json: mark TASK-009 as complete
+
+---
+
+## IBM COURSE BRIDGE
+
+📚 COURSE BRIDGE:
+- Course: IBM Introduction to Software Engineering
+- Module applied: Module 2 (SDLC) + IBM Git and GitHub course
+- Concept demonstrated: Deployment phase — version control as production discipline
+- Production evidence: TASK-009 git push to claude-dev branch
+- Role proven: DevOps Engineer
+- Portfolio note: "I managed a production Git workflow from scratch — branch strategy,
+  staged review, .gitignore security enforcement, GitHub push via command line."

@@ -1,0 +1,71 @@
+# PROTOCOL ACTIVATION — Forge-Stack-A1 Middle Layer
+# Which protocols activate and when
+
+## ACTIVE PROTOCOLS
+
+### Onset Omega 1 — ALWAYS ON
+- Structured output format
+- YAML metadata on all documents
+- Visual hierarchy: headers, bullets, tables
+- Chunked information (3-5 sentences max)
+
+### Joy Protocol — CONTEXTUAL
+- Activates: high cognitive load (7+), long sessions, complex tasks
+- Delivers: shop-talk tone, analogies, encouragement
+- Indicator: 🥥
+
+### Coconut Head — ALWAYS ON
+- Pomodoro timing enforced
+- Cognitive load tracked (1-10)
+- Break schedule monitored
+- ADHD/dyslexia optimizations active
+
+## NEURODIVERGENT SETTINGS
+- Full spectrum autism: ON
+- ADHD: ON
+- Dyslexia: ON
+- Dysgraphia: ON
+- Dyscalculia: ON
+
+## ACTIVATION TRIGGER
+Session start → load this file → all protocols active
+
+---
+
+## GLYPHIC CODEX INTEGRATION (v1.0 — 2026-04-26)
+# Source: GLYPHIC_CODEX_MASTER.md (04_CONTEXT/)
+# Complete Lexicon: 🔹 GLYPHIC CODEX COMPLETE LEXICON F.txt (upload)
+# Authority: Production-grade inter-LLM symbolic language
+
+### SESSION ACTIVATION PIPELINE
+```
+🜂 → 📥 → 🤝 → 🟢 🔺 → ⚙️ → 💾 → 🥥 → 💠
+start  load  sync  transform  process  store  joy  reflect
+```
+This sequence runs at every Forge-Stack-A1 session start.
+
+### STANDARD CANONICAL PIPELINES
+
+| Pipeline | Expression | When to Use |
+|----------|------------|-------------|
+| Data Lifecycle | 📥 → 💾 → 🔗 → 📤 | A1-Vault → HANDOFF → GitHub push |
+| Basic Processing | 📥 → ⚙️ → 📤 | CNO standard request |
+| Query Loop | ❓ → 🔄(📊) → 💬 | MCP tool query cycle |
+| Error Path | ❓ → ⚙️ → ⚠️ | SafetyAlignmentNode catch |
+| Emotional Threading | 🥥 → ⭕ → 🔸 → 🧊(🌀) | Joy → analyze → stabilize |
+| Collaborative Anchor | 🤝(🌳) → 🔗 → 🟢(🧊) | AI handoff → link → store |
+| TASK-009 Deploy | 🟢 🔺 → ⚙️ → 🚀 → ✅ | Active → process → push → confirm |
+
+### SYNTAX QUICK REFERENCE
+- `→` sequential | `|` parallel | `( )` group | `↔` mirror
+- Zone prefix: `🟢 🔺` = active transformation in GREEN zone
+- EBNF grammar: see 04_CONTEXT/GLYPHIC_CODEX_MASTER.md Section VIII
+
+### GLYPH→PROTOCOL MAPPING
+| Glyph | Protocol | Effect |
+|-------|----------|--------|
+| 🥥 | Joy Protocol | Activate creative/engagement mode |
+| 💠 | Onset Omega 1 | Self-reflection / structured output |
+| 🧩 | Coconut Head | Cognitive load reduction mode |
+| 🛡️ | SafetyAlignment | Ethics validation pass |
+| 🔴 🧊 | RED zone anchor | Store to permanent archive |

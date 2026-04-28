@@ -1,0 +1,35 @@
+# PIPELINE — Forge-Stack-A1 Middle Layer
+# Processing order for every session task
+
+## SESSION PIPELINE
+
+STEP 1 — LOAD
+  - Read HANDOFF_STATE.json
+  - Check GREEN zone files
+  - Confirm active nodes
+
+STEP 2 — RECEIVE
+  - Accept input from Shannon
+  - Query-Interface classifies request
+  - Request-Router assigns node
+
+STEP 3 — PROCESS
+  - Node executes task
+  - Snippet-Cache checks for reusable code
+  - Context-Packager assembles output
+
+STEP 4 — OUTPUT
+  - Deliver result to Shannon
+  - Log to session record
+  - Update relevant file
+
+STEP 5 — CLOSE
+  - Update HANDOFF_STATE.json
+  - Migrate completed files (GREEN → YELLOW)
+  - Commit to GitHub if applicable
+
+## POMODORO ALIGNMENT
+- Each pipeline cycle = one Pomodoro block (25 min)
+- Steps 1-2: First 5 minutes
+- Steps 3-4: Minutes 5-20
+- Step 5: Final 5 minutes

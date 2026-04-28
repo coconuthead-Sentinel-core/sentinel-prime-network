@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+*.accdb
+*.lock
+.env
+.env.*
+.env.txt
+_runtime/
+.claude/
+~/.claude/
+node_modules/
+dist/
+build/
+.venv/
+venv/
