@@ -3,8 +3,10 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Microsoft.UI.Xaml.Media;
 using SentinelForge.Services;
 using Windows.Storage.Pickers;
+using Windows.UI; // Color.FromArgb
 
 namespace SentinelForge.ViewModels;
 
@@ -67,6 +69,45 @@ public partial class MainPageViewModel : ObservableObject
 
     [ObservableProperty] public partial bool IsDictating { get; set; }
     [ObservableProperty] public partial string DictationStatus { get; set; } = "";
+
+    // ---- Sentinel session / cognitive-load zone (ported from the original app) ----
+
+    /// <summary>Self-reported energy 1–10, driving the GREEN/YELLOW/RED zone.</summary>
+    [ObservableProperty] public partial int EnergyLevel { get; set; } = 7;
+
+    /// <summary>The one primary focus for this session (Sentinel spec: pick ONE).</summary>
+    [ObservableProperty] public partial string PrimaryTask { get; set; } = "";
+
+    public string ZoneName => EnergyLevel >= 7 ? "GREEN ZONE" : EnergyLevel >= 4 ? "YELLOW ZONE" : "RED ZONE";
+
+    public SolidColorBrush ZoneBrush => new(
+        EnergyLevel >= 7 ? Color.FromArgb(255, 46, 125, 50)   // green
+        : EnergyLevel >= 4 ? Color.FromArgb(255, 245, 168, 37) // amber
+        : Color.FromArgb(255, 198, 40, 40));                   // red
+
+    public string EnergySummary => $"Energy {EnergyLevel}/10";
+
+    // Ω1 always on; Joy active at load ≥ 7; Coconut always on.
+    public string ProtocolSummary => $"Ω1 ✓    Joy {(EnergyLevel >= 7 ? "✓" : "—")}    Coconut ✓";
+
+    public string PrimaryTaskDisplay => string.IsNullOrWhiteSpace(PrimaryTask) ? "(no focus set)" : PrimaryTask;
+
+    partial void OnEnergyLevelChanged(int value)
+    {
+        OnPropertyChanged(nameof(ZoneName));
+        OnPropertyChanged(nameof(ZoneBrush));
+        OnPropertyChanged(nameof(EnergySummary));
+        OnPropertyChanged(nameof(ProtocolSummary));
+    }
+
+    partial void OnPrimaryTaskChanged(string value) => OnPropertyChanged(nameof(PrimaryTaskDisplay));
+
+    /// <summary>Apply the results of the Session Start wizard.</summary>
+    public void ApplySession(int energy, string primaryTask)
+    {
+        EnergyLevel = Math.Clamp(energy, 1, 10);
+        PrimaryTask = primaryTask?.Trim() ?? "";
+    }
 
     public MainPageViewModel()
     {

@@ -24,39 +24,60 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <StackPanel Grid.Row="0" Spacing="4">
+            <StackPanel Grid.Row="0" Spacing="8">
                 <TextBlock Text="Sentinel Forge — Reader" Style="{StaticResource TitleTextBlockStyle}" />
+
+                <!-- Session / cognitive-load zone bar (ported from the original app) -->
+                <Border Background="{x:Bind ViewModel.ZoneBrush, Mode=OneWay}" CornerRadius="6" Padding="14,8">
+                    <Grid ColumnSpacing="18">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Foreground="White" FontWeight="SemiBold" VerticalAlignment="Center">
+                            <Run Text="{x:Bind ViewModel.EnergySummary, Mode=OneWay}" /><Run Text="   ·   " /><Run Text="{x:Bind ViewModel.ZoneName, Mode=OneWay}" />
+                        </TextBlock>
+                        <TextBlock Grid.Column="1" Foreground="White" VerticalAlignment="Center" Text="{x:Bind ViewModel.ProtocolSummary, Mode=OneWay}" />
+                        <TextBlock Grid.Column="2" Foreground="White" Opacity="0.9" VerticalAlignment="Center" TextTrimming="CharacterEllipsis">
+                            <Run Text="Focus: " /><Run Text="{x:Bind ViewModel.PrimaryTaskDisplay, Mode=OneWay}" />
+                        </TextBlock>
+                        <Button Grid.Column="3" Click="OnNewSession" Content="New session"
+                                Background="#33FFFFFF" Foreground="White" BorderThickness="0" />
+                    </Grid>
+                </Border>
+
                 <TextBlock
                     Text="{x:Bind ViewModel.EngineStatus, Mode=OneWay}"
-                    Style="{StaticResource CaptionTextBlockStyle}"
-                    Foreground="{ThemeResource SystemFillColorSuccessBrush}" />
+                    Style="{StaticResource CaptionTextBlockStyle}" Opacity="0.7" />
             </StackPanel>
 
-            <!-- Commands -->
+            <!-- Commands (colored toolbar, ported design) -->
             <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
-                <Button Command="{x:Bind ViewModel.OpenDocumentCommand}" Style="{StaticResource AccentButtonStyle}">
+                <Button Command="{x:Bind ViewModel.OpenDocumentCommand}" Background="#0EA5E9" Foreground="White" BorderThickness="0">
                     <StackPanel Orientation="Horizontal" Spacing="8">
-                        <FontIcon Glyph="&#xE8E5;" FontSize="14" />
+                        <FontIcon Glyph="&#xE8E5;" FontSize="14" Foreground="White" />
                         <TextBlock Text="Open" />
                     </StackPanel>
                 </Button>
-                <Button Click="OnAddHighlight" ToolTipService.ToolTip="Save the selected text as a highlight">
+                <Button Click="OnAddHighlight" Background="#F59E0B" Foreground="White" BorderThickness="0" ToolTipService.ToolTip="Save the selected text as a highlight">
                     <StackPanel Orientation="Horizontal" Spacing="8">
-                        <FontIcon Glyph="&#xE7E6;" FontSize="14" />
+                        <FontIcon Glyph="&#xE7E6;" FontSize="14" Foreground="White" />
                         <TextBlock Text="Highlight" />
                     </StackPanel>
                 </Button>
-                <Button Command="{x:Bind ViewModel.BookmarkChapterCommand}" ToolTipService.ToolTip="Bookmark the current chapter">
+                <Button Command="{x:Bind ViewModel.BookmarkChapterCommand}" Background="#8B5CF6" Foreground="White" BorderThickness="0" ToolTipService.ToolTip="Bookmark the current chapter">
                     <StackPanel Orientation="Horizontal" Spacing="8">
-                        <FontIcon Glyph="&#xE8A4;" FontSize="14" />
+                        <FontIcon Glyph="&#xE8A4;" FontSize="14" Foreground="White" />
                         <TextBlock Text="Bookmark" />
                     </StackPanel>
                 </Button>
-                <Button Command="{x:Bind ViewModel.ReadAloudCommand}" ToolTipService.ToolTip="Read aloud">
-                    <FontIcon Glyph="&#xE767;" FontSize="14" />
+                <Button Command="{x:Bind ViewModel.ReadAloudCommand}" Background="#22C55E" Foreground="White" BorderThickness="0" ToolTipService.ToolTip="Read aloud">
+                    <FontIcon Glyph="&#xE767;" FontSize="14" Foreground="White" />
                 </Button>
-                <Button Command="{x:Bind ViewModel.StopReadingCommand}" ToolTipService.ToolTip="Stop">
-                    <FontIcon Glyph="&#xE71A;" FontSize="14" />
+                <Button Command="{x:Bind ViewModel.StopReadingCommand}" Background="#6B7280" Foreground="White" BorderThickness="0" ToolTipService.ToolTip="Stop">
+                    <FontIcon Glyph="&#xE71A;" FontSize="14" Foreground="White" />
                 </Button>
                 <TextBlock
                     Text="{x:Bind ViewModel.DocumentTitle, Mode=OneWay}"
