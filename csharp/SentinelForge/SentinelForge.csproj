@@ -69,6 +69,10 @@
     <PackageReference Include="DocumentFormat.OpenXml" Version="3.5.1" />
     <!-- Step 6: SQLite-backed study tools (highlights / notes / bookmarks). -->
     <PackageReference Include="Microsoft.Data.Sqlite" Version="10.0.8" />
+    <!-- Step 7: on-device dictation — Whisper (offline STT) + NAudio mic capture. -->
+    <PackageReference Include="Whisper.net" Version="1.9.0" />
+    <PackageReference Include="Whisper.net.Runtime" Version="1.9.0" />
+    <PackageReference Include="NAudio" Version="2.3.0" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools.WinApp" Version="0.3.1">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>

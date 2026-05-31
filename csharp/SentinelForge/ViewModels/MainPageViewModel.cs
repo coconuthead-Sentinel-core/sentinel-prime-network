@@ -61,6 +61,13 @@ public partial class MainPageViewModel : ObservableObject
     [ObservableProperty]
     public partial string NoteDraft { get; set; } = "";
 
+    // On-device dictation (Whisper). Lazy so mic/model init only on first use.
+    private DictationService? _dictationInstance;
+    private DictationService Dictation => _dictationInstance ??= new DictationService();
+
+    [ObservableProperty] public partial bool IsDictating { get; set; }
+    [ObservableProperty] public partial string DictationStatus { get; set; } = "";
+
     public MainPageViewModel()
     {
         try
@@ -148,6 +155,42 @@ public partial class MainPageViewModel : ObservableObject
         Db.AddHighlight(_currentDocPath, CurrentChapterTitle, text);
         RefreshStudyLists();
         NotificationService.Show("Highlight saved", text.Length > 60 ? text[..60] + "…" : text);
+    }
+
+    /// <summary>Toggle dictation: start recording, or stop and transcribe into the note box.</summary>
+    [RelayCommand]
+    private async Task ToggleDictateAsync()
+    {
+        if (!IsDictating)
+        {
+            bool ok = await Dictation.RequestMicAccessAsync();
+            if (!ok) { DictationStatus = "⚠ Microphone access denied."; return; }
+            Dictation.StartRecording();
+            IsDictating = true;
+            DictationStatus = "🎤 Listening… click again to stop";
+            return;
+        }
+
+        IsDictating = false;
+        DictationStatus = "Transcribing…";
+        try
+        {
+            var progress = new Progress<string>(s => DictationStatus = s);
+            string text = await Dictation.StopAndTranscribeAsync(progress);
+            if (!string.IsNullOrWhiteSpace(text))
+            {
+                NoteDraft = string.IsNullOrEmpty(NoteDraft) ? text : NoteDraft + " " + text;
+                DictationStatus = "✅ Inserted into note — review and Save.";
+            }
+            else
+            {
+                DictationStatus = "No speech detected.";
+            }
+        }
+        catch (Exception ex)
+        {
+            DictationStatus = "Dictation error: " + ex.Message;
+        }
     }
 
     [RelayCommand]
