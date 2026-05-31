@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "SentinelForge (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "SentinelForge (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page
+    x:Class="SentinelForge.LibraryPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:vm="using:SentinelForge.ViewModels"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Padding="24" RowSpacing="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Library" Style="{StaticResource TitleTextBlockStyle}" />
+
+        <!-- Toolbar: choose folder / refresh / zone filter -->
+        <Grid Grid.Row="1" ColumnSpacing="8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Command="{x:Bind ViewModel.ChooseFolderCommand}" Content="Choose folder…" />
+            <Button Grid.Column="1" Command="{x:Bind ViewModel.RefreshCommand}" ToolTipService.ToolTip="Rescan">
+                <FontIcon Glyph="&#xE72C;" FontSize="14" />
+            </Button>
+            <TextBlock Grid.Column="2" Text="Zone" VerticalAlignment="Center" Style="{StaticResource CaptionTextBlockStyle}" />
+            <ComboBox Grid.Column="3" SelectedIndex="{x:Bind ViewModel.ZoneFilter, Mode=TwoWay}" MinWidth="120">
+                <ComboBoxItem Content="All" />
+                <ComboBoxItem Content="🟢 Green" />
+                <ComboBoxItem Content="🟡 Yellow" />
+                <ComboBoxItem Content="🔴 Red" />
+            </ComboBox>
+            <TextBlock Grid.Column="4" Text="{x:Bind ViewModel.StatusText, Mode=OneWay}"
+                       VerticalAlignment="Center" HorizontalAlignment="Right"
+                       Style="{StaticResource CaptionTextBlockStyle}" Opacity="0.7" TextTrimming="CharacterEllipsis" />
+        </Grid>
+
+        <!-- Document list -->
+        <ListView Grid.Row="2" ItemsSource="{x:Bind ViewModel.Items, Mode=OneWay}" SelectionMode="None">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="vm:LibraryItem">
+                    <Grid ColumnSpacing="12" Padding="0,6">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Text="{x:Bind ZoneDisplay, Mode=OneWay}" VerticalAlignment="Center" />
+
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                            <TextBlock Text="{x:Bind FileName}" Style="{StaticResource BodyStrongTextBlockStyle}" TextTrimming="CharacterEllipsis" />
+                            <TextBlock Text="{x:Bind Format}" Style="{StaticResource CaptionTextBlockStyle}" Opacity="0.7" />
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="4" VerticalAlignment="Center">
+                            <Button Tag="Green" Click="OnSetZone" ToolTipService.ToolTip="Green zone" Padding="6">🟢</Button>
+                            <Button Tag="Yellow" Click="OnSetZone" ToolTipService.ToolTip="Yellow zone" Padding="6">🟡</Button>
+                            <Button Tag="Red" Click="OnSetZone" ToolTipService.ToolTip="Red zone" Padding="6">🔴</Button>
+                        </StackPanel>
+
+                        <Button Grid.Column="3" Click="OnOpen" Style="{StaticResource AccentButtonStyle}" Content="Open" VerticalAlignment="Center" />
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>
