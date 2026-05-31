@@ -32,7 +32,7 @@ public sealed class DictationService : IDisposable
                 dir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "SentinelForge");
                 Directory.CreateDirectory(dir);
             }
-            return Path.Combine(dir, "ggml-base.en.bin");
+            return Path.Combine(dir, "ggml-small.en.bin");
         }
     }
 
@@ -79,6 +79,7 @@ public sealed class DictationService : IDisposable
         await EnsureModelAsync(progress);
 
         progress?.Report("Transcribing…");
+        NormalizePcm(pcm);                 // boost quiet input for better accuracy
         byte[] wavBytes = BuildWav(pcm);
 
         // Run inference off the UI thread.
@@ -98,8 +99,8 @@ public sealed class DictationService : IDisposable
     {
         if (File.Exists(ModelPath) && new FileInfo(ModelPath).Length > 1_000_000) return;
 
-        progress?.Report("Downloading speech model (one-time, ~140 MB)…");
-        const string url = "https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-base.en.bin";
+        progress?.Report("Downloading speech model (one-time, ~470 MB)…");
+        const string url = "https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-small.en.bin";
         using var http = new System.Net.Http.HttpClient { Timeout = TimeSpan.FromMinutes(10) };
         using var resp = await http.GetAsync(url, System.Net.Http.HttpCompletionOption.ResponseHeadersRead);
         resp.EnsureSuccessStatusCode();
@@ -111,6 +112,39 @@ public sealed class DictationService : IDisposable
 
         if (File.Exists(ModelPath)) File.Delete(ModelPath);
         File.Move(tmp, ModelPath);
+    }
+
+    /// <summary>
+    /// Peak-normalize 16-bit PCM so quiet recordings are amplified toward full
+    /// scale (helps Whisper). Gain is capped so we don't blow up the noise floor,
+    /// and never reduces already-loud audio.
+    /// </summary>
+    private static void NormalizePcm(byte[] pcm)
+    {
+        int n = pcm.Length / 2;
+        if (n == 0) return;
+
+        int peak = 0;
+        for (int i = 0; i < n; i++)
+        {
+            short s = (short)(pcm[2 * i] | (pcm[2 * i + 1] << 8));
+            int a = Math.Abs((int)s);
+            if (a > peak) peak = a;
+        }
+        if (peak == 0) return;
+
+        double gain = (0.95 * 32767.0) / peak;
+        if (gain <= 1.0) return;          // already loud enough
+        gain = Math.Min(gain, 8.0);       // cap to avoid over-amplifying background noise
+
+        for (int i = 0; i < n; i++)
+        {
+            short s = (short)(pcm[2 * i] | (pcm[2 * i + 1] << 8));
+            int v = (int)Math.Round(s * gain);
+            v = Math.Clamp(v, short.MinValue, short.MaxValue);
+            pcm[2 * i] = (byte)(v & 0xFF);
+            pcm[2 * i + 1] = (byte)((v >> 8) & 0xFF);
+        }
     }
 
     /// <summary>Wrap raw 16-bit PCM (16 kHz mono) in a minimal WAV container.</summary>
