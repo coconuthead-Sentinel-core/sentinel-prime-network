@@ -117,8 +117,8 @@ public sealed partial class MainPage : Page
         panel.Children.Add(taskRow);
         panel.Children.Add(dictStatus);
 
-        // Pick an action to begin — each colored button is an action you choose.
-        panel.Children.Add(new TextBlock { Text = "Pick to begin:", Margin = new Thickness(0, 6, 0, 0) });
+        // Focus — each colored button is the action you choose to begin with.
+        panel.Children.Add(new TextBlock { Text = "Focus", FontWeight = FontWeights.SemiBold, Margin = new Thickness(0, 6, 0, 0) });
 
         string? chosen = null;
         ContentDialog dialog = null!;

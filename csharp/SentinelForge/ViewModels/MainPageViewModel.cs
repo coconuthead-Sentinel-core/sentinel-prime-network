@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Microsoft.UI.Xaml;        // DispatcherTimer
 using Microsoft.UI.Xaml.Media;
 using SentinelForge.Services;
 using Windows.Storage.Pickers;
@@ -84,6 +85,85 @@ public partial class MainPageViewModel : ObservableObject
     public string SessionActionDisplay => string.IsNullOrEmpty(SessionAction) ? "" : "   ·   " + SessionAction;
 
     partial void OnSessionActionChanged(string value) => OnPropertyChanged(nameof(SessionActionDisplay));
+
+    /// <summary>Move the focus through its states: Do Now (green) → Wait (yellow) → Done (red).</summary>
+    [RelayCommand]
+    private void SetAction(string action) => SessionAction = action;
+
+    // ---- Focus-session Pomodoro timer (settable length) ----
+
+    private DispatcherTimer? _focusTimer;
+    private int _focusRemaining;
+    private bool _focusRunning;
+
+    /// <summary>Pomodoro cycle length in minutes (user-settable).</summary>
+    [ObservableProperty] public partial double FocusMinutes { get; set; } = 25;
+    [ObservableProperty] public partial string FocusTimerDisplay { get; set; } = "25:00";
+    [ObservableProperty] public partial string FocusTimerButtonLabel { get; set; } = "Start";
+
+    private void EnsureFocusTimer()
+    {
+        if (_focusTimer != null) return;
+        _focusTimer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) };
+        _focusTimer.Tick += FocusTick;
+        _focusRemaining = (int)Math.Max(1, FocusMinutes) * 60;
+        UpdateFocusDisplay();
+    }
+
+    [RelayCommand]
+    private void StartPauseFocus()
+    {
+        EnsureFocusTimer();
+        if (_focusRunning)
+        {
+            _focusTimer!.Stop();
+            _focusRunning = false;
+            FocusTimerButtonLabel = "Start";
+        }
+        else
+        {
+            if (_focusRemaining <= 0) _focusRemaining = (int)Math.Max(1, FocusMinutes) * 60;
+            _focusTimer!.Start();
+            _focusRunning = true;
+            FocusTimerButtonLabel = "Pause";
+        }
+    }
+
+    [RelayCommand]
+    private void ResetFocus()
+    {
+        EnsureFocusTimer();
+        _focusTimer!.Stop();
+        _focusRunning = false;
+        _focusRemaining = (int)Math.Max(1, FocusMinutes) * 60;
+        FocusTimerButtonLabel = "Start";
+        UpdateFocusDisplay();
+    }
+
+    private void FocusTick(object? sender, object e)
+    {
+        if (_focusRemaining > 0)
+        {
+            _focusRemaining--;
+            UpdateFocusDisplay();
+            return;
+        }
+        _focusTimer!.Stop();
+        _focusRunning = false;
+        FocusTimerButtonLabel = "Start";
+        NotificationService.Show("Focus session complete", PrimaryTaskDisplay);
+    }
+
+    private void UpdateFocusDisplay() => FocusTimerDisplay = $"{_focusRemaining / 60:00}:{_focusRemaining % 60:00}";
+
+    partial void OnFocusMinutesChanged(double value)
+    {
+        if (!_focusRunning)
+        {
+            _focusRemaining = (int)Math.Max(1, value) * 60;
+            UpdateFocusDisplay();
+        }
+    }
 
     public string ZoneName => EnergyLevel >= 7 ? "GREEN ZONE" : EnergyLevel >= 4 ? "YELLOW ZONE" : "RED ZONE";
 
