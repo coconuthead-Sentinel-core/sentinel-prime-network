@@ -39,7 +39,6 @@
                         <TextBlock Grid.Column="0" Foreground="White" FontWeight="SemiBold" VerticalAlignment="Center">
                             <Run Text="{x:Bind ViewModel.EnergySummary, Mode=OneWay}" /><Run Text="   ·   " /><Run Text="{x:Bind ViewModel.ZoneName, Mode=OneWay}" />
                         </TextBlock>
-                        <TextBlock Grid.Column="1" Foreground="White" VerticalAlignment="Center" Text="{x:Bind ViewModel.ProtocolSummary, Mode=OneWay}" />
                         <TextBlock Grid.Column="2" Foreground="White" Opacity="0.9" VerticalAlignment="Center" TextTrimming="CharacterEllipsis">
                             <Run Text="Focus: " /><Run Text="{x:Bind ViewModel.PrimaryTaskDisplay, Mode=OneWay}" />
                         </TextBlock>

@@ -333,4 +333,9 @@ public partial class MainPageViewModel : ObservableObject
     /// <summary>Stop read-aloud playback.</summary>
     [RelayCommand]
     private void StopReading() => Reader.Stop();
+
+    // Dictation accessors so the Session Start dialog can voice-fill the focus field.
+    public Task<bool> RequestMicAsync() => Dictation.RequestMicAccessAsync();
+    public void BeginDictation() => Dictation.StartRecording();
+    public Task<string> EndDictationAsync(IProgress<string>? progress = null) => Dictation.StopAndTranscribeAsync(progress);
 }

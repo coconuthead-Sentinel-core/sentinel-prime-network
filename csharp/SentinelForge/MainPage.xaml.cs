@@ -44,7 +44,7 @@ public sealed partial class MainPage : Page
 
     private async void OnNewSession(object sender, RoutedEventArgs e) => await ShowSessionStartAsync();
 
-    /// <summary>The Sentinel "Session Start" wizard: energy → zone, one focus, protocols.</summary>
+    /// <summary>The Sentinel "Session Start" wizard: energy → zone, one focus (typed or dictated).</summary>
     private async Task ShowSessionStartAsync()
     {
         var slider = new Slider { Minimum = 1, Maximum = 10, StepFrequency = 1, Value = ViewModel.EnergyLevel, Width = 280 };
@@ -59,22 +59,66 @@ public sealed partial class MainPage : Page
 
         var taskBox = new TextBox
         {
-            PlaceholderText = "Pick ONE focus…",
+            PlaceholderText = "Pick ONE focus… (or use the mic)",
             Text = ViewModel.PrimaryTask,
             AcceptsReturn = false,
+            VerticalAlignment = VerticalAlignment.Center,
         };
 
-        var panel = new StackPanel { Spacing = 10, MinWidth = 360 };
+        // Microphone button: dictate the primary focus (offline Whisper).
+        var dictStatus = new TextBlock { Opacity = 0.7, TextWrapping = TextWrapping.Wrap };
+        var micButton = new Button
+        {
+            Content = "🎤",
+            MinWidth = 44,
+            Margin = new Thickness(8, 0, 0, 0),
+            VerticalAlignment = VerticalAlignment.Stretch,
+        };
+        ToolTipService.SetToolTip(micButton, "Dictate the focus");
+        bool recording = false;
+        micButton.Click += async (_, __) =>
+        {
+            if (!recording)
+            {
+                bool ok = await ViewModel.RequestMicAsync();
+                if (!ok) { dictStatus.Text = "⚠ Microphone access denied."; return; }
+                ViewModel.BeginDictation();
+                recording = true;
+                micButton.Content = "⏹";
+                dictStatus.Text = "🎤 Listening… click again to stop";
+            }
+            else
+            {
+                recording = false;
+                micButton.Content = "🎤";
+                dictStatus.Text = "Transcribing…";
+                string text = await ViewModel.EndDictationAsync(new System.Progress<string>(s => dictStatus.Text = s));
+                if (!string.IsNullOrWhiteSpace(text))
+                    taskBox.Text = string.IsNullOrEmpty(taskBox.Text) ? text : taskBox.Text + " " + text;
+                dictStatus.Text = "";
+            }
+        };
+
+        var taskRow = new Grid();
+        taskRow.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+        taskRow.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
+        Grid.SetColumn(taskBox, 0);
+        Grid.SetColumn(micButton, 1);
+        taskRow.Children.Add(taskBox);
+        taskRow.Children.Add(micButton);
+
+        var panel = new StackPanel { Spacing = 10, MinWidth = 380 };
         panel.Children.Add(new TextBlock { Text = "How's your energy right now? (1–10)" });
         var row = new StackPanel { Orientation = Orientation.Horizontal, Spacing = 12 };
         row.Children.Add(slider);
         row.Children.Add(zoneText);
         panel.Children.Add(row);
         panel.Children.Add(new TextBlock { Text = "One primary task for this session", Margin = new Thickness(0, 6, 0, 0) });
-        panel.Children.Add(taskBox);
+        panel.Children.Add(taskRow);
+        panel.Children.Add(dictStatus);
         panel.Children.Add(new TextBlock
         {
-            Text = "Active protocols:  Ω1 always on    ·    Joy at load ≥ 7    ·    Coconut always on",
+            Text = "Zones:    7–10 → GREEN     ·     4–6 → YELLOW     ·     1–3 → RED",
             Opacity = 0.7,
             TextWrapping = TextWrapping.Wrap,
             Margin = new Thickness(0, 6, 0, 0),
@@ -95,7 +139,7 @@ public sealed partial class MainPage : Page
     }
 
     // Save the current reading-pane text selection as a highlight.
-    private void OnAddHighlight(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    private void OnAddHighlight(object sender, RoutedEventArgs e)
         => ViewModel.AddHighlight(ReadingText.SelectedText);
 
     // Clicking a bookmark jumps the reading view to that chapter.
@@ -104,21 +148,21 @@ public sealed partial class MainPage : Page
         if (e.ClickedItem is Bookmark b) ViewModel.GoToChapter(b.ChapterIndex);
     }
 
-    private void OnDeleteHighlight(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    private void OnDeleteHighlight(object sender, RoutedEventArgs e)
     {
-        if (((Microsoft.UI.Xaml.FrameworkElement)sender).DataContext is Highlight h)
+        if (((FrameworkElement)sender).DataContext is Highlight h)
             ViewModel.DeleteHighlightCommand.Execute(h);
     }
 
-    private void OnDeleteNote(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    private void OnDeleteNote(object sender, RoutedEventArgs e)
     {
-        if (((Microsoft.UI.Xaml.FrameworkElement)sender).DataContext is Note n)
+        if (((FrameworkElement)sender).DataContext is Note n)
             ViewModel.DeleteNoteCommand.Execute(n);
     }
 
-    private void OnDeleteBookmark(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    private void OnDeleteBookmark(object sender, RoutedEventArgs e)
     {
-        if (((Microsoft.UI.Xaml.FrameworkElement)sender).DataContext is Bookmark b)
+        if (((FrameworkElement)sender).DataContext is Bookmark b)
             ViewModel.DeleteBookmarkCommand.Execute(b);
     }
 }
