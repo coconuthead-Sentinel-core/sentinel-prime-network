@@ -123,14 +123,15 @@ public sealed partial class MainPage : Page
         string? chosen = null;
         ContentDialog dialog = null!;
 
-        Button ActionButton(string word, byte r, byte g, byte b)
+        Button ActionButton(string word, byte r, byte g, byte b, bool darkText = false)
         {
             var btn = new Button
             {
                 Content = word,
-                MinWidth = 120,
+                MinWidth = 92,
                 Margin = new Thickness(0, 0, 8, 0),
-                Foreground = new Microsoft.UI.Xaml.Media.SolidColorBrush(Microsoft.UI.Colors.White),
+                Foreground = new Microsoft.UI.Xaml.Media.SolidColorBrush(
+                    darkText ? Windows.UI.Color.FromArgb(255, 26, 26, 26) : Microsoft.UI.Colors.White),
                 Background = new Microsoft.UI.Xaml.Media.SolidColorBrush(Windows.UI.Color.FromArgb(255, r, g, b)),
                 BorderThickness = new Thickness(0),
             };
@@ -139,9 +140,10 @@ public sealed partial class MainPage : Page
         }
 
         var actions = new StackPanel { Orientation = Orientation.Horizontal };
-        actions.Children.Add(ActionButton("Do Now", 46, 125, 50));   // green
-        actions.Children.Add(ActionButton("Wait", 245, 168, 37));    // yellow / amber
-        actions.Children.Add(ActionButton("Done", 198, 40, 40));     // red
+        actions.Children.Add(ActionButton("Do Now", 46, 125, 50));               // green
+        actions.Children.Add(ActionButton("Wait", 245, 168, 37));                // yellow / amber
+        actions.Children.Add(ActionButton("Schedule", 245, 245, 245, darkText: true)); // white
+        actions.Children.Add(ActionButton("Done", 198, 40, 40));                 // red
         panel.Children.Add(actions);
 
         dialog = new ContentDialog

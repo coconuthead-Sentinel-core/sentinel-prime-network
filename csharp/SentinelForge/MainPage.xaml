@@ -52,7 +52,8 @@
                     <StackPanel Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
                         <TextBlock Text="Focus" FontWeight="SemiBold" VerticalAlignment="Center" Margin="0,0,4,0" />
                         <Button Content="Do Now" Command="{x:Bind ViewModel.SetActionCommand}" CommandParameter="Do Now" Background="#2E7D32" Foreground="White" BorderThickness="0" ToolTipService.ToolTip="Active now (green)" />
-                        <Button Content="Wait" Command="{x:Bind ViewModel.SetActionCommand}" CommandParameter="Wait" Background="#F5A825" Foreground="White" BorderThickness="0" ToolTipService.ToolTip="Defer / schedule (yellow)" />
+                        <Button Content="Wait" Command="{x:Bind ViewModel.SetActionCommand}" CommandParameter="Wait" Background="#F5A825" Foreground="White" BorderThickness="0" ToolTipService.ToolTip="Waiting (yellow)" />
+                        <Button Content="Schedule" Command="{x:Bind ViewModel.SetActionCommand}" CommandParameter="Schedule" Background="#F5F5F5" Foreground="#1A1A1A" BorderThickness="0" ToolTipService.ToolTip="Schedule for later (white)" />
                         <Button Content="Done" Command="{x:Bind ViewModel.SetActionCommand}" CommandParameter="Done" Background="#C62828" Foreground="White" BorderThickness="0" ToolTipService.ToolTip="Completed (red)" />
                         <Border Width="1" Height="26" Background="{ThemeResource DividerStrokeColorDefaultBrush}" Margin="6,0" />
                         <FontIcon Glyph="&#xE916;" FontSize="14" VerticalAlignment="Center" />
