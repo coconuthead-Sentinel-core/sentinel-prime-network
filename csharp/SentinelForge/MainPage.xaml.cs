@@ -116,26 +116,48 @@ public sealed partial class MainPage : Page
         panel.Children.Add(new TextBlock { Text = "One primary task for this session", Margin = new Thickness(0, 6, 0, 0) });
         panel.Children.Add(taskRow);
         panel.Children.Add(dictStatus);
-        panel.Children.Add(new TextBlock
-        {
-            Text = "Zones:    7–10 → GREEN     ·     4–6 → YELLOW     ·     1–3 → RED",
-            Opacity = 0.7,
-            TextWrapping = TextWrapping.Wrap,
-            Margin = new Thickness(0, 6, 0, 0),
-        });
 
-        var dialog = new ContentDialog
+        // Pick an action to begin — each colored button is an action you choose.
+        panel.Children.Add(new TextBlock { Text = "Pick to begin:", Margin = new Thickness(0, 6, 0, 0) });
+
+        string? chosen = null;
+        ContentDialog dialog = null!;
+
+        Button ActionButton(string word, byte r, byte g, byte b)
+        {
+            var btn = new Button
+            {
+                Content = word,
+                MinWidth = 120,
+                Margin = new Thickness(0, 0, 8, 0),
+                Foreground = new Microsoft.UI.Xaml.Media.SolidColorBrush(Microsoft.UI.Colors.White),
+                Background = new Microsoft.UI.Xaml.Media.SolidColorBrush(Windows.UI.Color.FromArgb(255, r, g, b)),
+                BorderThickness = new Thickness(0),
+            };
+            btn.Click += (_, __) => { chosen = word; dialog.Hide(); };
+            return btn;
+        }
+
+        var actions = new StackPanel { Orientation = Orientation.Horizontal };
+        actions.Children.Add(ActionButton("Do Now", 46, 125, 50));   // green
+        actions.Children.Add(ActionButton("Wait", 245, 168, 37));    // yellow / amber
+        actions.Children.Add(ActionButton("Done", 198, 40, 40));     // red
+        panel.Children.Add(actions);
+
+        dialog = new ContentDialog
         {
             Title = "Session Start",
             Content = panel,
-            PrimaryButtonText = "Begin Session",
             CloseButtonText = "Skip for now",
-            DefaultButton = ContentDialogButton.Primary,
             XamlRoot = this.XamlRoot,
         };
 
-        if (await dialog.ShowAsync() == ContentDialogResult.Primary)
+        await dialog.ShowAsync();
+        if (chosen != null)
+        {
             ViewModel.ApplySession((int)slider.Value, taskBox.Text);
+            ViewModel.SessionAction = chosen;
+        }
     }
 
     // Save the current reading-pane text selection as a highlight.

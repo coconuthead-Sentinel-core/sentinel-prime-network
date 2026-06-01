@@ -78,6 +78,13 @@ public partial class MainPageViewModel : ObservableObject
     /// <summary>The one primary focus for this session (Sentinel spec: pick ONE).</summary>
     [ObservableProperty] public partial string PrimaryTask { get; set; } = "";
 
+    /// <summary>Chosen action for the focus: "Do Now" (green) / "Wait" (yellow) / "Done" (red).</summary>
+    [ObservableProperty] public partial string SessionAction { get; set; } = "";
+
+    public string SessionActionDisplay => string.IsNullOrEmpty(SessionAction) ? "" : "   ·   " + SessionAction;
+
+    partial void OnSessionActionChanged(string value) => OnPropertyChanged(nameof(SessionActionDisplay));
+
     public string ZoneName => EnergyLevel >= 7 ? "GREEN ZONE" : EnergyLevel >= 4 ? "YELLOW ZONE" : "RED ZONE";
 
     public SolidColorBrush ZoneBrush => new(
