@@ -61,10 +61,10 @@
             <TextBox Grid.Column="0" PlaceholderText="New task…"
                      Text="{x:Bind ViewModel.NewTaskText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <ComboBox Grid.Column="1" SelectedIndex="{x:Bind ViewModel.NewTaskQuadrant, Mode=TwoWay}" MinWidth="150">
-                <ComboBoxItem Content="Do" />
+                <ComboBoxItem Content="Do Now" />
                 <ComboBoxItem Content="Schedule" />
-                <ComboBoxItem Content="Delegate" />
-                <ComboBoxItem Content="Eliminate" />
+                <ComboBoxItem Content="Wait" />
+                <ComboBoxItem Content="Done" />
             </ComboBox>
             <Button Grid.Column="2" Command="{x:Bind ViewModel.AddTaskCommand}" Style="{StaticResource AccentButtonStyle}" Content="Add" />
         </Grid>
@@ -84,7 +84,7 @@
             <Border Grid.Row="0" Grid.Column="0" Background="{ThemeResource LayerFillColorDefaultBrush}" CornerRadius="8" Padding="12">
                 <Grid RowSpacing="6">
                     <Grid.RowDefinitions><RowDefinition Height="Auto" /><RowDefinition Height="*" /></Grid.RowDefinitions>
-                    <TextBlock Grid.Row="0" Text="Do — Urgent &amp; Important" Style="{StaticResource BodyStrongTextBlockStyle}" />
+                    <TextBlock Grid.Row="0" Text="🟢  Do Now" Style="{StaticResource BodyStrongTextBlockStyle}" />
                     <ListView Grid.Row="1" ItemsSource="{x:Bind ViewModel.Quadrant0, Mode=OneWay}" SelectionMode="None" ItemTemplate="{StaticResource TaskTemplate}" />
                 </Grid>
             </Border>
@@ -93,7 +93,7 @@
             <Border Grid.Row="0" Grid.Column="1" Background="{ThemeResource LayerFillColorDefaultBrush}" CornerRadius="8" Padding="12">
                 <Grid RowSpacing="6">
                     <Grid.RowDefinitions><RowDefinition Height="Auto" /><RowDefinition Height="*" /></Grid.RowDefinitions>
-                    <TextBlock Grid.Row="0" Text="Schedule — Important, Not Urgent" Style="{StaticResource BodyStrongTextBlockStyle}" />
+                    <TextBlock Grid.Row="0" Text="⚪  Schedule" Style="{StaticResource BodyStrongTextBlockStyle}" />
                     <ListView Grid.Row="1" ItemsSource="{x:Bind ViewModel.Quadrant1, Mode=OneWay}" SelectionMode="None" ItemTemplate="{StaticResource TaskTemplate}" />
                 </Grid>
             </Border>
@@ -102,7 +102,7 @@
             <Border Grid.Row="1" Grid.Column="0" Background="{ThemeResource LayerFillColorDefaultBrush}" CornerRadius="8" Padding="12">
                 <Grid RowSpacing="6">
                     <Grid.RowDefinitions><RowDefinition Height="Auto" /><RowDefinition Height="*" /></Grid.RowDefinitions>
-                    <TextBlock Grid.Row="0" Text="Delegate — Urgent, Not Important" Style="{StaticResource BodyStrongTextBlockStyle}" />
+                    <TextBlock Grid.Row="0" Text="🟡  Wait" Style="{StaticResource BodyStrongTextBlockStyle}" />
                     <ListView Grid.Row="1" ItemsSource="{x:Bind ViewModel.Quadrant2, Mode=OneWay}" SelectionMode="None" ItemTemplate="{StaticResource TaskTemplate}" />
                 </Grid>
             </Border>
@@ -111,7 +111,7 @@
             <Border Grid.Row="1" Grid.Column="1" Background="{ThemeResource LayerFillColorDefaultBrush}" CornerRadius="8" Padding="12">
                 <Grid RowSpacing="6">
                     <Grid.RowDefinitions><RowDefinition Height="Auto" /><RowDefinition Height="*" /></Grid.RowDefinitions>
-                    <TextBlock Grid.Row="0" Text="Eliminate — Not Urgent, Not Important" Style="{StaticResource BodyStrongTextBlockStyle}" />
+                    <TextBlock Grid.Row="0" Text="🔴  Done" Style="{StaticResource BodyStrongTextBlockStyle}" />
                     <ListView Grid.Row="1" ItemsSource="{x:Bind ViewModel.Quadrant3, Mode=OneWay}" SelectionMode="None" ItemTemplate="{StaticResource TaskTemplate}" />
                 </Grid>
             </Border>

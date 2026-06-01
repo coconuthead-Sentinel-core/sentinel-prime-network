@@ -110,6 +110,9 @@ public partial class FocusPageViewModel : ObservableObject
 
     // ================= Eisenhower matrix =================
 
+    /// <summary>Reload tasks from the DB (called when the Focus page becomes visible).</summary>
+    public void ReloadTasks() => LoadTasks();
+
     private void LoadTasks()
     {
         Quadrant0.Clear(); Quadrant1.Clear(); Quadrant2.Clear(); Quadrant3.Clear();

@@ -13,6 +13,10 @@ public sealed partial class FocusPage : Page
     public FocusPage()
     {
         InitializeComponent();
+
+        // Reload tasks each time the page is shown, so focuses filed from the
+        // Reader's Session Start dialog appear in the matrix.
+        Loaded += (_, _) => ViewModel.ReloadTasks();
     }
 
     private void OnTaskChecked(object sender, RoutedEventArgs e)

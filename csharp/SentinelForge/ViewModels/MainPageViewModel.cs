@@ -86,9 +86,27 @@ public partial class MainPageViewModel : ObservableObject
 
     partial void OnSessionActionChanged(string value) => OnPropertyChanged(nameof(SessionActionDisplay));
 
-    /// <summary>Move the focus through its states: Do Now (green) → Wait (yellow) → Done (red).</summary>
+    /// <summary>Move the focus through its states (also reflected in the header).</summary>
     [RelayCommand]
     private void SetAction(string action) => SessionAction = action;
+
+    /// <summary>
+    /// Map a focus action to its Eisenhower-matrix quadrant and file the focus there:
+    /// Do Now=0, Schedule=1, Wait=2, Done=3. Tasks persist and show on the Focus page.
+    /// </summary>
+    public void AddFocusToMatrix(string action, string focusText)
+    {
+        if (string.IsNullOrWhiteSpace(focusText)) return;
+        int quadrant = action switch
+        {
+            "Do Now" => 0,
+            "Schedule" => 1,
+            "Wait" => 2,
+            "Done" => 3,
+            _ => 0,
+        };
+        try { Db.AddTask(quadrant, focusText.Trim()); } catch { /* non-fatal */ }
+    }
 
     // ---- Focus-session Pomodoro timer (settable length) ----
 

@@ -159,6 +159,7 @@ public sealed partial class MainPage : Page
         {
             ViewModel.ApplySession((int)slider.Value, taskBox.Text);
             ViewModel.SessionAction = chosen;
+            ViewModel.AddFocusToMatrix(chosen, taskBox.Text); // file into the Eisenhower matrix
         }
     }
 
