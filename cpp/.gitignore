@@ -1,0 +1,8 @@
+# C++ build artifacts (the engine is rebuilt from source via core/build_core.bat)
+*.obj
+*.exe
+*.dll
+*.exp
+*.lib
+*.pdb
+*.ilk
