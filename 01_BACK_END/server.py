@@ -22,7 +22,7 @@ Run:
 doc_id:   FORGE-BACK-server-001
 zone:     GREEN
 status:   ACTIVE
-author:   Shannon Brian Kelly + Claude (foreman)
+author:   Shannon Brian Kelley + Claude (foreman)
 version:  v001
 """
 from __future__ import annotations
@@ -165,7 +165,7 @@ async def root() -> Dict[str, Any]:
         "service":            "Sentinel Prime Network",
         "version":            "0.1.0",
         "docs":               "/docs",
-        "activation_phrase":  "Quantum Nexus Forge protocols active. Shannon Brian Kelly recognized. Zone alignment confirmed.",
+        "activation_phrase":  "Quantum Nexus Forge protocols active. Shannon Brian Kelley recognized. Zone alignment confirmed.",
     }
 
 

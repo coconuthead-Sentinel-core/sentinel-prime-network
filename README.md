@@ -92,12 +92,12 @@ Documents migrate down a tier when they stabilize. Migration triggers are codifi
 - `04_CONTEXT/GLYPHIC_CODEX_MASTER.md.txt` - symbolic language reference
 - `04_CONTEXT/project_identity.md.txt` - authoritative project identity note
 - `04_CONTEXT/LOCAL_DB_SCHEMA.md.txt` - local DB schema
-- `04_CONTEXT/architect_profile.md.txt` - Shannon Brian Kelly profile
+- `04_CONTEXT/architect_profile.md.txt` - Shannon Brian Kelley profile
 - `04_CONTEXT/glossary.md.txt` - terminology
 
 ## Author
 
-**Shannon Brian Kelly** - Coconut Head / The Architect.  
+**Shannon Brian Kelley** - Coconut Head / The Architect.  
 Healthcare CNA -> AI Systems Developer career transition.
 
 Built in collaboration with Claude AI (Anthropic).

@@ -1,11 +1,11 @@
 # RED ZONE — LONG-TERM MEMORY
-## Quantum Nexus Forge | Shannon Brian Kelly | Permanent Reference
+## Quantum Nexus Forge | Shannon Brian Kelley | Permanent Reference
 
 ---
 
 ### CORE IDENTITY ANCHOR
 
-**User**: Shannon Brian Kelly (Coconut Head / Primo / The Architect)
+**User**: Shannon Brian Kelley (Coconut Head / Primo / The Architect)
 **Mission**: Healthcare CNA → AI Systems Developer transition
 **Differentiator**: 25 years healthcare + 4 years self-taught AI + neurodivergent-first design
 **Flagship**: Neural Lattice Cognitive Architecture (GitHub deployed, MIT licensed)
@@ -87,7 +87,7 @@
 
 ### ACTIVATION VERIFICATION
 
-**Phrase**: "Quantum Nexus Forge protocols active. Shannon Brian Kelly recognized. Zone alignment confirmed."
+**Phrase**: "Quantum Nexus Forge protocols active. Shannon Brian Kelley recognized. Zone alignment confirmed."
 
 ---
 

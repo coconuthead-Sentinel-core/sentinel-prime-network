@@ -60,6 +60,6 @@ different levels of maturity.
 
 ## Author
 
-**Shannon Brian Kelly**  
+**Shannon Brian Kelley**  
 Healthcare CNA -> AI Systems Developer transition  
 Built in collaboration with Claude AI and Codex

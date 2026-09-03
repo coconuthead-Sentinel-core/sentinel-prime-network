@@ -11,7 +11,7 @@
 | cognitive_load | Integer | 1-10 | 8 |
 | timestamp | ISO8601 | YYYY-MM-DDTHH:MM:SSZ | 2026-04-24T00:00:00Z |
 | status | Enum | DRAFT/ACTIVE/ARCHIVED | ACTIVE |
-| author | String | Name | Shannon Brian Kelly |
+| author | String | Name | Shannon Brian Kelley |
 | version | String | v### | v001 |
 
 ## ZONE RULES
